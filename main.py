@@ -22,17 +22,18 @@ def minus(vec1, vec2):
         temp[i] = vec1[i] - vec2[i]
     return temp
 
-SLAU = [
-    [9, 8, 3, 4],
-    [3, 6, 3, -3],
-    [5, 3, 1, 2]
-]
 
-SLAU = [
-    [1, 1, -1, 0],
-    [2, 1, 1, 7],
-    [1, -1, 1, 2]
-]
+# SLAU = [
+#     [1, 1, -1, 0],
+#     [2, 1, 1, 7],
+#     [1, -1, 1, 2]
+# ]
+
+# SLAU = [
+#     [1, 2, 1, 8],
+#     [5, -4, -7, 0],
+#     [2, 1, -1, 7]
+# ]
 
 def gauss(SLAU):
     SIZE = len(SLAU)
@@ -76,27 +77,40 @@ def ort(SLAU):
             temp.append(0)
         T.append(temp)
 
-    for i in range(SIZE):
+    for i in range(SIZE + 1):
         temp = []
         for j in range(SIZE):
             temp.append(SLAU[j][i])
         a.append(temp)
 
-    print(a)
-
     R.append(a[0])
     for i in range(SIZE - 1):
-        T[i][1] = 1
-        for j in range(i + 1, 3):
+        T[i][i] = 1
+        for j in range(i + 1, SIZE):
             T[i][j] = mult_vect(R[i], a[j]) / mult_vect(R[i], R[i])
         temp = a[i + 1]
         for j in range(i + 1):
-            temp = minus(temp, mult_vecnum(T[j][SIZE - 1], R[j]))
+            temp = minus(temp, mult_vecnum(T[j][i + 1], R[j]))
         R.append(temp)
-    T[SIZE - 1][SIZE - 1] = 1
 
-    print(R)
-    print(T)
+    X = [0] * SIZE
+    for i in range(SIZE - 1, -1, -1):
+        X[i] = mult_vect(R[i], a[SIZE]) / mult_vect(R[i], a[i])
+        a[SIZE] = minus(a[SIZE], mult_vecnum(X[i], a[i]))
 
-# gauss(SLAU)
+    for i in range(SIZE):
+        X[i] = round(X[i], 2)
+
+    print(X)
+SLAU = [
+    [9, 8, 3, 4],
+    [3, 6, 3, -3],
+    [5, 3, 1, 2]
+]
+gauss(SLAU)
+SLAU = [
+    [9, 8, 3, 4],
+    [3, 6, 3, -3],
+    [5, 3, 1, 2]
+]
 ort(SLAU)
