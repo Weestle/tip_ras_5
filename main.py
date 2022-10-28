@@ -4,11 +4,13 @@ def disp(matrix):
             print('%-7s' % round(matrix[i][j], 2), end="")
         print()
 
+
 def mult_vect(vec1, vec2):
     s = 0
     for i in range(len(vec1)):
         s += vec1[i] * vec2[i]
     return s
+
 
 def mult_vecnum(n, vec):
     temp = [0] * len(vec)
@@ -16,24 +18,13 @@ def mult_vecnum(n, vec):
         temp[i] = vec[i] * n
     return temp
 
+
 def minus(vec1, vec2):
     temp = [0] * len(vec1)
     for i in range(len(vec1)):
         temp[i] = vec1[i] - vec2[i]
     return temp
 
-
-# SLAU = [
-#     [1, 1, -1, 0],
-#     [2, 1, 1, 7],
-#     [1, -1, 1, 2]
-# ]
-
-# SLAU = [
-#     [1, 2, 1, 8],
-#     [5, -4, -7, 0],
-#     [2, 1, -1, 7]
-# ]
 
 def gauss(SLAU):
     SIZE = len(SLAU)
@@ -62,7 +53,7 @@ def gauss(SLAU):
     for i in range(SIZE):
         X[i] = round(X[i], 2)
 
-    print(X)
+    return X
 
 
 def ort(SLAU):
@@ -101,16 +92,18 @@ def ort(SLAU):
     for i in range(SIZE):
         X[i] = round(X[i], 2)
 
-    print(X)
+    return X
+
+
 SLAU = [
     [9, 8, 3, 4],
     [3, 6, 3, -3],
     [5, 3, 1, 2]
 ]
-gauss(SLAU)
+print("gauss: ", gauss(SLAU))
 SLAU = [
     [9, 8, 3, 4],
     [3, 6, 3, -3],
     [5, 3, 1, 2]
 ]
-ort(SLAU)
+print("ort: ", ort(SLAU))
