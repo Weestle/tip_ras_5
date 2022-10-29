@@ -26,6 +26,13 @@ def minus(vec1, vec2):
     return temp
 
 
+# SLAU = [
+#     [1, 2, 3, 4, 5],
+#     [6, 7, 8, 9, 10],
+#     [11, 0, 13, 14, 15],
+#     [16, 17, 0, 19, 20]
+# ]
+
 def gauss(SLAU):
     SIZE = len(SLAU)
     disp(SLAU)
@@ -100,6 +107,7 @@ SLAU = [
     [3, 6, 3, -3],
     [5, 3, 1, 2]
 ]
+
 print("gauss: ", gauss(SLAU))
 SLAU = [
     [9, 8, 3, 4],
