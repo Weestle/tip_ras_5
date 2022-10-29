@@ -108,10 +108,5 @@ SLAU = [
     [5, 3, 1, 2]
 ]
 
-print("gauss: ", gauss(SLAU))
-SLAU = [
-    [9, 8, 3, 4],
-    [3, 6, 3, -3],
-    [5, 3, 1, 2]
-]
-print("ort: ", ort(SLAU))
+print("gauss: ", gauss(SLAU.copy()))
+print("ort: ", ort(SLAU.copy()))
